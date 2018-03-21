@@ -12,8 +12,11 @@
 <h1>Dog Hunt</h1>
 <p>Search for your favourite dog breed</p>
 <form>
-    <input type="text" id="search-box" class="form__search-box" action="/name-data" method="get" placeholder="Start typing your breed" autoFocus required>
-    <ul id="search-results" class="form__ul hidden"></ul>
+    <input type="text" id="search-box" class="form__search-box" action="/name-data" method="get" placeholder="Start typing your breed" autoFocus required list="dogbreeds-json" aria-label="Search Box">
+    <datalist id="dogbreeds-json">
+        <option value="example1">
+        <option value="dog">
+    </datalist>
 </form>
 <h2 id="search-header"></h2>
 </body>
