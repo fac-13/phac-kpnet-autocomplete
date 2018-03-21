@@ -9,4 +9,5 @@ module.exports = function(request, response) {
   } else {
     handlers.pageNotFound(request, response);
   }
-};
+}
+
