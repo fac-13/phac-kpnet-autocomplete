@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const logic = require("./logic")
 const handlers = (module.exports = {});
 
 handlers.serverLanding = function(request, response) {
@@ -31,6 +32,19 @@ handlers.serverPublic = function(request, response) {
     response.end(file);
   });
 };
+handlers.serverSearchApi = function(request, response){
+  const [path, query] = request.url.split('?');
+  response.writeHead(200, {"Content-Type": "text/html"});
+  if(!query){
+    response.write(JSON.stringify({}));
+    response.end();
+    return;
+  } 
+  const [key, value] = query.split('=');
+  const returnedDogs = logic.searchJson(value);
+  response.write(JSON.stringify(returnedDogs));
+  response.end();
+}
 
 handlers.pageNotFound = function(request, response) {
   response.writeHead(404, { "Content-Type": "text/html" });
