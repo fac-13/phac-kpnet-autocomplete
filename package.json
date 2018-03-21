@@ -1,0 +1,27 @@
+{
+  "name": "phac-kpnet-autocomplete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac-13/phac-kpnet-autocomplete.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac-13/phac-kpnet-autocomplete/issues"
+  },
+  "homepage": "https://github.com/fac-13/phac-kpnet-autocomplete#readme",
+  "devDependencies": {
+    "nyc": "^11.6.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.9.0"
+  }
+}
