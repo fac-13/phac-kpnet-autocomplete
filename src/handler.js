@@ -25,7 +25,9 @@ handlers.serverPublic = function(request, response) {
       html: "text/html",
       css: "text/css",
       js: "application/javascript",
-      ico: "image/x-icon"
+      ico: "image/x-icon",
+      jpg: "image/jpg",
+      json: "application/json"
     };
     response.writeHead(200, { "Content-Type": extensionType[extension] });
     response.end(file);
