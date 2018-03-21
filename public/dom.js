@@ -1,16 +1,4 @@
-var dummyDogs = {
-    "affenpinscher": [ ],
-    "african": [ ],
-    "airedale": [ ],
-    "akita": [ ],
-    "appenzeller": [ ],
-    "basenji": [ ],
-    "beagle": [ ],
-    "bluetick": [ ],
-    "borzoi": [ ],
-    "bouvier": [ ],
-    "boxer": [ ],
-}
+
 
 
 
