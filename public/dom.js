@@ -1,5 +1,6 @@
 const input = document.getElementById('search-box');
 const searchHeader = document.getElementById('search-header');
+const dataList = document.getElementById('dogbreeds-json');
 
 const search = function(){
     const inputTerms = input.value.toLowerCase();
@@ -11,9 +12,24 @@ const search = function(){
         if (error){
             console.error(error);
         }else{
-            console.log("response is ", response);
+            clearContents(dataList);
+            dataListPopulate(response);
         }
     })
+}
+const clearContents = function(container){
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
+
+const dataListPopulate = function(dogsObject){
+    const arrayOfDogs = Object.keys(dogsObject);
+    arrayOfDogs.forEach(function(dog){
+        var option = document.createElement("option");
+        option.value = dog;
+        dataList.appendChild(option);
+    });
 }
 
 const xhr = function (url, callback) {
