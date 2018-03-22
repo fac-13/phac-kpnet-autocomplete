@@ -25,7 +25,7 @@ const search = function() {
   const inputTerms = input.value.toLowerCase();
   // const resultObj = logicFunctions.searchJson(inputTerms, testJson);
   // console.log(resultObj);
-//   searchHeader.innerHTML = inputTerms;
+  //   searchHeader.innerHTML = inputTerms;
   const url = `/api/search?q=${inputTerms}`;
   xhr(url, function(error, response) {
     if (error) {
@@ -48,11 +48,11 @@ const onSubmitDogChoice = function(e) {
   let dogValue = input.value;
   if (dogValue.includes("(")) {
     handleSubbreed(dogValue);
-  }else{
+  } else {
     handleBreedOnly(dogValue);
   }
 };
-const handleBreedOnly = function(dogValue){
+const handleBreedOnly = function(dogValue) {
   let url = `https://dog.ceo/api/breed/${dogValue}/images/random`;
   xhr(url, function(error, response) {
     if (error) {
@@ -61,9 +61,14 @@ const handleBreedOnly = function(dogValue){
     displayResults(response);
   });
 };
-const handleSubbreed= function(dogValue){
-  let breedSubbreed = dogValue.replace(')', '').replace('(', '').split(' ');
-  let url = `https://dog.ceo/api/breed/${breedSubbreed[0]}/${breedSubbreed[1]}/images/random`;
+const handleSubbreed = function(dogValue) {
+  let breedSubbreed = dogValue
+    .replace(")", "")
+    .replace("(", "")
+    .split(" ");
+  let url = `https://dog.ceo/api/breed/${breedSubbreed[0]}/${
+    breedSubbreed[1]
+  }/images/random`;
   console.log(url);
   xhr(url, function(error, response) {
     if (error) {
@@ -78,46 +83,53 @@ const displayResults = function(res) {
   sectionResults.appendChild(dogPic);
 };
 const dataListPopulate = function(dogsObject) {
-  const arrayOfDogs = Object.keys(dogsObject);
-  arrayOfDogs.forEach(function(dog) {
-    if (dogsObject[dog].length > 0) {
-      dogsObject[dog].forEach(function(item) {
-        let optionText = `${dog} (${item})`;
+  if (Object.keys(dogsObject).length === 0) {
+    handleNoDog();
+  } else {
+    const arrayOfDogs = Object.keys(dogsObject);
+    arrayOfDogs.forEach(function(dog) {
+      if (dogsObject[dog].length > 0) {
+        dogsObject[dog].forEach(function(item) {
+          let optionText = `${dog} (${item})`;
+          let option = document.createElement("option");
+          option.value = optionText;
+          dataList.appendChild(option);
+        });
+      } else {
         let option = document.createElement("option");
-        option.value = optionText;
+        option.value = dog;
         dataList.appendChild(option);
-      });
-    } else {
-      let option = document.createElement("option");
-      option.value = dog;
-      dataList.appendChild(option);
-    }
-  });
+      }
+    });
+  }
+};
+
+const handleNoDog = function() {
+  let noDog = document.createElement("h2");
+  noDog.textContent = "Not a Dog!";
+  clearContents(sectionResults);
+  sectionResults.appendChild(noDog);
 };
 
 const headerShrink = function() {
-    
-        const header = document.querySelector('.header');
-        const headerTitle = document.querySelector('.header__title');
-        const headerDes = document.querySelector('.header__description');
-        const headerInput = document.querySelector('.header__input');
-        const form = document.getElementById('form');
+  const header = document.querySelector(".header");
+  const headerTitle = document.querySelector(".header__title");
+  const headerDes = document.querySelector(".header__description");
+  const headerInput = document.querySelector(".header__input");
+  const form = document.getElementById("form");
 
-    if (header.classList.contains('header')){
-        header.classList.remove('header');
-        header.classList.add('header--small');
-        headerTitle.classList.remove('header__title');
-        headerTitle.classList.add('header__title--small');
-        headerDes.classList.remove('header__description');
-        headerDes.classList.add('header__description--small');
-        // headerInput.classList.remove('header__input');
-        // headerInput.classList.add('header__input--small');
-        form.style.display = "flex";
-
-    }
-        
-    
-}
+  if (header.classList.contains("header")) {
+    header.classList.remove("header");
+    header.classList.add("header--small");
+    headerTitle.classList.remove("header__title");
+    headerTitle.classList.add("header__title--small");
+    headerDes.classList.remove("header__description");
+    headerDes.classList.add("header__description--small");
+    // headerInput.classList.remove('header__input');
+    // headerInput.classList.add('header__input--small');
+    form.style.display = "flex";
+  }
+};
 
 input.addEventListener("keyup", search, false);
 submitButton.addEventListener("click", onSubmitDogChoice);
