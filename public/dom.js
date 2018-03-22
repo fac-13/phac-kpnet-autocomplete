@@ -2,6 +2,26 @@ const input = document.getElementById('search-box');
 const searchHeader = document.getElementById('search-header');
 const dataList = document.getElementById('dogbreeds-json');
 const submitButton = document.getElementById('submit-button');
+const sectionResults = document.getElementById('section-results');
+
+
+const xhr = function (url, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', function() {
+        if (xhr.status == 200) {
+            const response = JSON.parse(xhr.responseText);
+            return callback(null, response);
+        }else{
+            callback('Server error'+xhr.status);
+        }
+
+    })
+    xhr.addEventListener('error', function(){
+        callback('Server did not respond');
+    })
+    xhr.open("GET", url);
+    xhr.send();
+}
 
 const search = function(){
     const inputTerms = input.value.toLowerCase();
@@ -26,7 +46,21 @@ const clearContents = function(container){
 }
 const onSubmitDogChoice = function(e){
     e.preventDefault();
-    console.log(e.target);
+    let dogValue = input.value;
+    let url = `https://dog.ceo/api/breed/${dogValue}/images/random`;
+    console.log(url);
+    xhr(url, function(error, response) {
+        if (error){
+            console.error(error);
+        }
+        displayResults(response);
+    });
+}
+const displayResults = function(res){
+    let dogPic = document.createElement("img");
+    dogPic.src = res.message;
+    sectionResults.appendChild(dogPic);
+
 }
 const dataListPopulate = function(dogsObject){
     const arrayOfDogs = Object.keys(dogsObject);
@@ -37,23 +71,6 @@ const dataListPopulate = function(dogsObject){
     });
 }
 
-const xhr = function (url, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', function() {
-        if (xhr.status == 200) {
-            const response = JSON.parse(xhr.responseText);
-            return callback(null, response);
-        }else{
-            callback('Server error'+xhr.status);
-        }
-
-    })
-    xhr.addEventListener('error', function(){
-        callback('Server did not respond');
-    })
-    xhr.open("GET", url);
-    xhr.send();
-}
 
 input.addEventListener("keyup", search, false);
 submitButton.addEventListener("click", onSubmitDogChoice);
