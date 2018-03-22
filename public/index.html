@@ -9,15 +9,24 @@
 </head>
 
 <body>
+ 
+<header class="header">
 <h1>Dog Hunt</h1>
 <p>Search for your favourite dog breed</p>
 <form>
-    <input type="text" id="search-box" class="form__search-box" action="/name-data" method="get" placeholder="Start typing your breed" autoFocus required list="dogbreeds-json" aria-label="Search Box">
+    <input type="text" id="search-box" class="form__search-box" action="/name-data" method="get" placeholder="Start typing your breed"
+        autoFocus required list="dogbreeds-json" aria-label="Search Box">
     <datalist id="dogbreeds-json">
-        
+
     </datalist>
 </form>
 <h2 id="search-header"></h2>
+</header>    
+
+<section class="section__results">
+
+</section>
+
 </body>
 <script src="./public/dom.js"></script>
 
