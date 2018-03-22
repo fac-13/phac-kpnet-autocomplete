@@ -18,6 +18,7 @@ const search = function(){
     })
 }
 const clearContents = function(container){
+    input.setAttribute( "autocomplete", "off" );
     while (container.firstChild) {
         container.removeChild(container.firstChild);
     }
