@@ -1,5 +1,4 @@
 const input = document.getElementById("search-box");
-// const searchHeader = document.getElementById("search-header");
 const dataList = document.getElementById("dogbreeds-json");
 const submitButton = document.getElementById("submit-button");
 const sectionResults = document.getElementById("section-results");
@@ -23,9 +22,6 @@ const xhr = function(url, callback) {
 
 const search = function() {
   const inputTerms = input.value.toLowerCase();
-  // const resultObj = logicFunctions.searchJson(inputTerms, testJson);
-  // console.log(resultObj);
-  //   searchHeader.innerHTML = inputTerms;
   const url = `/api/search?q=${inputTerms}`;
   xhr(url, function(error, response) {
     if (error) {
@@ -36,12 +32,14 @@ const search = function() {
     }
   });
 };
+
 const clearContents = function(container) {
   input.setAttribute("autocomplete", "off");
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
 };
+
 const onSubmitDogChoice = function(e) {
   clearContents(sectionResults);
   e.preventDefault();
@@ -52,6 +50,7 @@ const onSubmitDogChoice = function(e) {
     handleBreedOnly(dogValue);
   }
 };
+
 const handleBreedOnly = function(dogValue) {
   let url = `https://dog.ceo/api/breed/${dogValue}/images/random`;
   xhr(url, function(error, response) {
@@ -61,6 +60,7 @@ const handleBreedOnly = function(dogValue) {
     displayResults(response);
   });
 };
+
 const handleSubbreed = function(dogValue) {
   let breedSubbreed = dogValue
     .replace(")", "")
@@ -83,30 +83,31 @@ const displayResults = function(res) {
   let dogPic = document.createElement("img");
   dogFrame.classList.add("image__container");
   sectionResults.appendChild(dogFrame).appendChild(dogPic);
-  dogPic.src = res.message;
-  dogPic.alt = 'picture of the dog';
+  if (res.message === "Breed not found") {
+    handleNoDog();
+  } else {
+    dogPic.src = res.message;
+    dogPic.alt = "picture of the dog";
+  }
 };
 
 const dataListPopulate = function(dogsObject) {
-    const arrayOfDogs = Object.keys(dogsObject); 
-    if (arrayOfDogs === []) {
-    handleNoDog();
-  } else {
-    arrayOfDogs.forEach(function(dog) {
-      if (dogsObject[dog].length > 0) {
-        dogsObject[dog].forEach(function(item) {
-          let optionText = `${dog} (${item})`;
-          let option = document.createElement("option");
-          option.value = optionText;
-          dataList.appendChild(option);
-        });
-      } else {
+  const arrayOfDogs = Object.keys(dogsObject);
+
+  arrayOfDogs.forEach(function(dog) {
+    if (dogsObject[dog].length > 0) {
+      dogsObject[dog].forEach(function(item) {
+        let optionText = `${dog} (${item})`;
         let option = document.createElement("option");
-        option.value = dog;
+        option.value = optionText;
         dataList.appendChild(option);
-      }
-    });
-  }
+      });
+    } else {
+      let option = document.createElement("option");
+      option.value = dog;
+      dataList.appendChild(option);
+    }
+  });
 };
 
 const handleNoDog = function() {
