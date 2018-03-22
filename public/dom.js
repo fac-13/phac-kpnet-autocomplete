@@ -46,8 +46,18 @@ const onSubmitDogChoice = function(e) {
   clearContents(sectionResults);
   e.preventDefault();
   let dogValue = input.value;
+  if (dogValue.includes("(")) {
+    let breedSubbreed = dogValue.replace(')', '').replace('(', '').split(' ');
+    let url = `https://dog.ceo/api/breed/${breedSubbreed[0]}/${breedSubbreed[1]}/images/random`;
+    console.log(url);
+    xhr(url, function(error, response) {
+      if (error) {
+        console.error(error);
+      }
+      displayResults(response);
+    });
+  }
   let url = `https://dog.ceo/api/breed/${dogValue}/images/random`;
-  console.log(url);
   xhr(url, function(error, response) {
     if (error) {
       console.error(error);
