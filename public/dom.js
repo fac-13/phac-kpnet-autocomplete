@@ -1,6 +1,7 @@
 const input = document.getElementById('search-box');
 const searchHeader = document.getElementById('search-header');
 const dataList = document.getElementById('dogbreeds-json');
+const submitButton = document.getElementById('submit-button');
 
 const search = function(){
     const inputTerms = input.value.toLowerCase();
@@ -23,7 +24,10 @@ const clearContents = function(container){
         container.removeChild(container.firstChild);
     }
 }
-
+const onSubmitDogChoice = function(e){
+    e.preventDefault();
+    console.log(e.target);
+}
 const dataListPopulate = function(dogsObject){
     const arrayOfDogs = Object.keys(dogsObject);
     arrayOfDogs.forEach(function(dog){
@@ -52,4 +56,5 @@ const xhr = function (url, callback) {
 }
 
 input.addEventListener("keyup", search, false);
+submitButton.addEventListener("click", onSubmitDogChoice);
 
