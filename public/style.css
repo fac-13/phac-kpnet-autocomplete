@@ -6,9 +6,12 @@ html {
 }
 
 body{
-    background-image: url(./img/background.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        height: 100%;
+    background: radial-gradient(#fbfcfd, #e7e8ef, #d2d5e2);
+    height: 100%;
+}
+
+.header{
+    height: 50%;
+    display: block;
+    text-align: center;
 }
