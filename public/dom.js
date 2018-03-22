@@ -75,6 +75,7 @@ const handleSubbreed= function(dogValue){
 const displayResults = function(res) {
   let dogPic = document.createElement("img");
   dogPic.src = res.message;
+  dogPic.alt = 'picture of the dog';
   sectionResults.appendChild(dogPic);
 };
 const dataListPopulate = function(dogsObject) {
