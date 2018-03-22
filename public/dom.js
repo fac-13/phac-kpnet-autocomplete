@@ -33,7 +33,6 @@ const search = function(){
         if (error){
             console.error(error);
         }else{
-            clearContents(dataList);
             dataListPopulate(response);
         }
     })
@@ -45,6 +44,8 @@ const clearContents = function(container){
     }
 }
 const onSubmitDogChoice = function(e){
+    clearContents(dataList);
+    clearContents(sectionResults);
     e.preventDefault();
     let dogValue = input.value;
     let url = `https://dog.ceo/api/breed/${dogValue}/images/random`;
@@ -57,6 +58,7 @@ const onSubmitDogChoice = function(e){
     });
 }
 const displayResults = function(res){
+    console.log(res);
     let dogPic = document.createElement("img");
     dogPic.src = res.message;
     sectionResults.appendChild(dogPic);
