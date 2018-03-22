@@ -6,19 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="/public/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
 </head>
 
 <body>
-<h1>Dog Hunt</h1>
-<p>Search for your favourite dog breed</p>
+ 
+<header class="header">
+<h1 class="header__title">Dog Hunt &nbsp;<i class="fas fa-paw"></i></h1>
+<p class="header__description">Search for your favourite dog breed</p>
 <form>
-    <input type="text" id="search-box" class="form__search-box" action="/name-data" method="get" placeholder="Start typing your breed" autoFocus required list="dogbreeds-json" aria-label="Search Box">
+    <input type="text" id="search-box" class="header__input" action="/name-data" method="get" placeholder="Woof woof..."
+        autoFocus required list="dogbreeds-json" aria-label="Search Box">
     <datalist id="dogbreeds-json">
-        
+
     </datalist>
     <input type="button" id="submit-button" class="form__submit-button" value="Get Dog!"></input>
 </form>
 <h2 id="search-header"></h2>
+</header>    
+
+<section class="section__results">
+
+</section>
+
 </body>
 <script src="/public/dom.js"></script>
 
