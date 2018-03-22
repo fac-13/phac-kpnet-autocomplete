@@ -46,8 +46,18 @@ const onSubmitDogChoice = function(e) {
   clearContents(sectionResults);
   e.preventDefault();
   let dogValue = input.value;
+  if (dogValue.includes("(")) {
+    let breedSubbreed = dogValue.replace(')', '').replace('(', '').split(' ');
+    let url = `https://dog.ceo/api/breed/${breedSubbreed[0]}/${breedSubbreed[1]}/images/random`;
+    console.log(url);
+    xhr(url, function(error, response) {
+      if (error) {
+        console.error(error);
+      }
+      displayResults(response);
+    });
+  }
   let url = `https://dog.ceo/api/breed/${dogValue}/images/random`;
-  console.log(url);
   xhr(url, function(error, response) {
     if (error) {
       console.error(error);
@@ -56,7 +66,6 @@ const onSubmitDogChoice = function(e) {
   });
 };
 const displayResults = function(res) {
-  console.log(res);
   let dogPic = document.createElement("img");
   dogPic.src = res.message;
   sectionResults.appendChild(dogPic);
@@ -64,9 +73,18 @@ const displayResults = function(res) {
 const dataListPopulate = function(dogsObject) {
   const arrayOfDogs = Object.keys(dogsObject);
   arrayOfDogs.forEach(function(dog) {
-    var option = document.createElement("option");
-    option.value = dog;
-    dataList.appendChild(option);
+    if (dogsObject[dog].length > 0) {
+      dogsObject[dog].forEach(function(item) {
+        let optionText = `${dog} (${item})`;
+        let option = document.createElement("option");
+        option.value = optionText;
+        dataList.appendChild(option);
+      });
+    } else {
+      let option = document.createElement("option");
+      option.value = dog;
+      dataList.appendChild(option);
+    }
   });
 };
 
