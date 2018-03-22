@@ -26,7 +26,36 @@ body{
 
 .header__input{
     height: 2rem;
-    width: 30ch;
     padding: 0.2rem 0.5rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
+}
+
+.form__submit-button {
+        font-size: 1.5rem;
+        text-transform: capitalize;
+        margin: 5%;
+        padding: 0.5%;
+        text-align: center;
+        border: 2px solid black;
+        background: #302f2f;
+        color: #fbfcfd;
+        font-weight:700;
+        border-radius: 0.6rem;
+}
+
+.form__submit-button:hover,
+.form__submit-button:focus {
+    color: #302f2f;
+    background: #fbfcfd;
+    border: 2px solid white;
+}
+
+
+@media screen and (min-width: 600px) {
+.header__input {
+    width: 30ch;
+    }
+.form__submit-button {
+    margin:1%;
+    }
 }
