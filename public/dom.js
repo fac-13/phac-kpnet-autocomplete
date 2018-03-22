@@ -84,13 +84,14 @@ const displayResults = function(res) {
   dogFrame.classList.add("image__container");
   sectionResults.appendChild(dogFrame).appendChild(dogPic);
   dogPic.src = res.message;
+  dogPic.alt = 'picture of the dog';
 };
 
 const dataListPopulate = function(dogsObject) {
-  if (Object.keys(dogsObject).length === 0) {
+    const arrayOfDogs = Object.keys(dogsObject); 
+    if (arrayOfDogs === []) {
     handleNoDog();
   } else {
-    const arrayOfDogs = Object.keys(dogsObject);
     arrayOfDogs.forEach(function(dog) {
       if (dogsObject[dog].length > 0) {
         dogsObject[dog].forEach(function(item) {
