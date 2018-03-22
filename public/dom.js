@@ -73,9 +73,12 @@ const handleSubbreed= function(dogValue){
   });
 };
 const displayResults = function(res) {
+  let dogFrame = document.createElement("div");
   let dogPic = document.createElement("img");
+  dogFrame.classList.add("image__container");
   dogPic.src = res.message;
-  sectionResults.appendChild(dogPic);
+  sectionResults.appendChild(dogFrame).appendChild(dogPic);
+
 };
 const dataListPopulate = function(dogsObject) {
   const arrayOfDogs = Object.keys(dogsObject);
@@ -110,13 +113,8 @@ const headerShrink = function() {
         headerTitle.classList.add('header__title--small');
         headerDes.classList.remove('header__description');
         headerDes.classList.add('header__description--small');
-        // headerInput.classList.remove('header__input');
-        // headerInput.classList.add('header__input--small');
         form.style.display = "flex";
-
     }
-        
-    
 }
 
 input.addEventListener("keyup", search, false);
