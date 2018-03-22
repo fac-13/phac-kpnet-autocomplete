@@ -2,45 +2,62 @@ html {
     margin: 0;
     padding: 0;
     color: #302f2f;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-body{
+body {
     background: radial-gradient(#fbfcfd, #e7e8ef, #d2d5e2);
     height: 100vh;
 }
 
-.header{
+.header {
     text-align: center;
     margin-top: 35vh;
 }
 
-.header__title{
+.header--small {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin: 0;
+    justify-content: center;
+    box-shadow: 0px 1px 5px grey;
+    padding: 0.4rem 0;
+}
+
+.header__title {
     font-size: 3rem;
 }
 
-.header__description{
+.header__title--small {
+    margin: 0 1rem;
+}
+
+.header__description {
     font-size: 1.3rem;
 }
 
-.header__input{
+.header__description--small {
+    display: none;
+}
+
+.header__input {
     height: 2rem;
     padding: 0.2rem 0.5rem;
     font-size: 1.5rem;
 }
 
 .form__submit-button {
-        font-size: 1.5rem;
-        text-transform: capitalize;
-        margin: 5%;
-        padding: 0.5%;
-        text-align: center;
-        border: 2px solid black;
-        background: #302f2f;
-        color: #fbfcfd;
-        font-weight:700;
-        border-radius: 0.6rem;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    margin: 5%;
+    padding: 0.5%;
+    text-align: center;
+    border: 2px solid black;
+    background: #302f2f;
+    color: #fbfcfd;
+    font-weight: 700;
+    border-radius: 0.6rem;
 }
 
 .form__submit-button:hover,
@@ -50,12 +67,15 @@ body{
     border: 2px solid white;
 }
 
-
 @media screen and (min-width: 600px) {
-.header__input {
-    width: 30ch;
+    .header__input {
+        width: 30ch;
     }
-.form__submit-button {
-    margin:1%;
+    .form__submit-button {
+        margin: 1%;
+    }
+    .header__input--small {
+        width: 40ch;
+        margin: 0.4rem;
     }
 }
