@@ -77,17 +77,21 @@ const handleSubbreed = function(dogValue) {
     displayResults(response);
   });
 };
+
 const displayResults = function(res) {
+  let dogFrame = document.createElement("div");
   let dogPic = document.createElement("img");
+  dogFrame.classList.add("image__container");
+  sectionResults.appendChild(dogFrame).appendChild(dogPic);
   dogPic.src = res.message;
   dogPic.alt = 'picture of the dog';
-  sectionResults.appendChild(dogPic);
 };
+
 const dataListPopulate = function(dogsObject) {
-  if (Object.keys(dogsObject).length === 0) {
+    const arrayOfDogs = Object.keys(dogsObject); 
+    if (arrayOfDogs === []) {
     handleNoDog();
   } else {
-    const arrayOfDogs = Object.keys(dogsObject);
     arrayOfDogs.forEach(function(dog) {
       if (dogsObject[dog].length > 0) {
         dogsObject[dog].forEach(function(item) {
@@ -126,8 +130,6 @@ const headerShrink = function() {
     headerTitle.classList.add("header__title--small");
     headerDes.classList.remove("header__description");
     headerDes.classList.add("header__description--small");
-    // headerInput.classList.remove('header__input');
-    // headerInput.classList.add('header__input--small');
     form.style.display = "flex";
   }
 };

@@ -10,7 +10,6 @@ var handlers = require("./handler");
 
 module.exports = function(request, response) {
   var url = request.url;
-  console.log('url is:',url);
   if (url === "/") {
     handlers.serverLanding(request, response);
   } else if (url.indexOf("public") !== -1) {

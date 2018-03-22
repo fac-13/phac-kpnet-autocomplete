@@ -48,7 +48,6 @@ body {
     height: 2rem;
     padding: 0.2rem 0.5rem;
     font-size: 1.5rem;
-    width:
 }
 
 form {
@@ -74,7 +73,27 @@ form {
 .form__submit-button:focus {
     color: #302f2f;
     background: #fbfcfd;
-    border: 2px solid white;
+    border: 2px solid #302f2f;
+    outline:none;
+}
+.section__results {
+        display: flex;
+        align-items: center;
+        height: 100%;
+}
+
+.image__container {
+    margin: 0 auto;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+img {
+
+    object-fit: cover;
+    height: 50vh;
+    width: 50vh;
+    box-shadow: 0 0 2rem grey;    
 }
 
 @media screen and (min-width: 600px) {
