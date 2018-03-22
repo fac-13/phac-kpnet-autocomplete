@@ -77,14 +77,15 @@ const handleSubbreed = function(dogValue) {
     displayResults(response);
   });
 };
+
 const displayResults = function(res) {
   let dogFrame = document.createElement("div");
   let dogPic = document.createElement("img");
   dogFrame.classList.add("image__container");
-  dogPic.src = res.message;
   sectionResults.appendChild(dogFrame).appendChild(dogPic);
-
+  dogPic.src = res.message;
 };
+
 const dataListPopulate = function(dogsObject) {
   if (Object.keys(dogsObject).length === 0) {
     handleNoDog();
