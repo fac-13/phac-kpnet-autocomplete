@@ -56,7 +56,6 @@ const onSubmitDogChoice = function(e) {
   });
 };
 const displayResults = function(res) {
-  console.log(res);
   let dogPic = document.createElement("img");
   dogPic.src = res.message;
   sectionResults.appendChild(dogPic);
@@ -64,9 +63,18 @@ const displayResults = function(res) {
 const dataListPopulate = function(dogsObject) {
   const arrayOfDogs = Object.keys(dogsObject);
   arrayOfDogs.forEach(function(dog) {
-    var option = document.createElement("option");
-    option.value = dog;
-    dataList.appendChild(option);
+    if (dogsObject[dog].length > 0) {
+      dogsObject[dog].forEach(function(item) {
+        let optionText = `${dog} (${item})`;
+        let option = document.createElement("option");
+        option.value = optionText;
+        dataList.appendChild(option);
+      });
+    } else {
+      let option = document.createElement("option");
+      option.value = dog;
+      dataList.appendChild(option);
+    }
   });
 };
 
