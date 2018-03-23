@@ -5,12 +5,14 @@
 ### Autocomplete website/widget
 
 #### Description
-- A website that enables users to quickly find and select words from a list of suggestions, as they type.
-- The list is dynamically generated from a pre-populated list of values (i.e. a dictionary file), leveraging searching and filtering.
-- A large data file is required to search through - consider the best data structure for this (e.g. `.txt` or `.json`).
-- Consider how implementation affects user experience and web performance (e.g. time to load and search through the data file).
+- A website that enables users to quickly find and select dogs from a list of suggestions, as they type.
+- The list is dynamically generated from a list of dog breeds stored as a JSON file on the Heroku server.
+- Once the dog is selected, a random picture of the specimen is displayed. Every FETCH click will render a new random picture of this breed's specimen.
+- The subreeds, such as Yorkshire terrier are displyed in brackets, i.e. terrier (Yorkshire). To find Yorkshire terrier, select terrier.
 
-#### Task
+#### The App structure
+
+![diagram](https://user-images.githubusercontent.com/18426161/37788373-29823162-2df9-11e8-940e-39ce288e92ca.jpg)
 
 Your task is to build a site which will update as you type (an autocompleter), as per the description above.
 
