@@ -7,7 +7,10 @@ const serverLanding = (request, response) => {
     err,
     file
   ) {
-    if (err) throw err;
+    if (err) {
+      res.writeHead(500, { "Content-Type": "text/html" });
+      res.end(`<h1> Sorry! There was an error. </h1>`);
+    }
     response.writeHead(200, { "Content-Type": "text/html" });
     response.end(file);
   });
@@ -18,7 +21,10 @@ const serverPublic = (request, response) => {
     err,
     file
   ) {
-    if (err) throw err;
+    if (err) {
+      res.writeHead(500, { "Content-Type": "text/html" });
+      res.end(`<h1> Sorry! There was an error. </h1>`);
+    }
     const extension = request.url.split(".")[1];
     
     const extensionType = {
