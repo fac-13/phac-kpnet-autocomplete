@@ -22,15 +22,17 @@ const fetchXhr = function(url, callback) {
 
 const search = function() {
   const inputTerms = input.value.toLowerCase();
-  const url = `/api/search?q=${inputTerms}`;
-  fetchXhr(url, function(error, response) {
-    if (error) {
-      console.error(error);
-    } else {
-      clearContents(dataList);
-      dataListPopulate(response);
-    }
-  });
+  if (inputTerms !== "") {
+    const url = `/api/search?q=${inputTerms}`;
+    fetchXhr(url, function(error, response) {
+      if (error) {
+        console.error(error);
+      } else {
+        clearContents(dataList);
+        dataListPopulate(response);
+      }
+    });
+  }
 };
 const clearContents = function(container) {
   input.setAttribute("autocomplete", "off");
