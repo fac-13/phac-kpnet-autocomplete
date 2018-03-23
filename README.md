@@ -14,19 +14,13 @@
 
 ![diagram](https://user-images.githubusercontent.com/18426161/37788373-29823162-2df9-11e8-940e-39ce288e92ca.jpg)
 
-Your task is to build a site which will update as you type (an autocompleter), as per the description above.
+The server handles the search and stores the object with all the dog breeds available.
 
-#### Goals
+All other operations including the API call to DOG.CEO.API are handled from the client's side.
 
-1) We expect __back-end testing using tape__ (test as many components as you can) and basic __front-end testing__. Please note that we expect tests on _pure functions_ and _not_ on the router.
+#### Testing
 
-2) Host your project on __heroku__, [see resource](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction).
+1) Only pure functions are tested and there is only one pure function.
 
-3) Use __module.exports__ and __require__ to break a single large server file into smaller modules.
+2) The photos and the original list of breeds come from: [see resource](https://dog.ceo/dog-api/).
 
-4) Consider what would be a good __server file structure__ based on what we have discussed over the week.
-
-
-#### Example
-
-[Dwyl autocompleter](https://github.com/dwyl/autocomplete).
