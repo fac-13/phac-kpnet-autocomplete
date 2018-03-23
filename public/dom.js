@@ -41,7 +41,7 @@ const clearContents = function(container) {
 const onSubmitDogChoice = function(e) {
   clearContents(sectionResults);
   e.preventDefault();
-  let dogValue = input.value;
+  let dogValue = input.value.trim();
   if (dogValue.includes("(")) {
     handleSubbreed(dogValue);
   } else {
