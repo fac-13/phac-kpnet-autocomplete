@@ -3,7 +3,7 @@ const dataList = document.getElementById("dogbreeds-json");
 const submitButton = document.getElementById("submit-button");
 const sectionResults = document.getElementById("section-results");
 
-const xhr = function(url, callback) {
+const fetchXhr = function(url, callback) {
   const xhr = new XMLHttpRequest();
   xhr.addEventListener("load", function() {
     if (xhr.status == 200) {
@@ -23,7 +23,7 @@ const xhr = function(url, callback) {
 const search = function() {
   const inputTerms = input.value.toLowerCase();
   const url = `/api/search?q=${inputTerms}`;
-  xhr(url, function(error, response) {
+  fetchXhr(url, function(error, response) {
     if (error) {
       console.error(error);
     } else {
@@ -50,7 +50,7 @@ const onSubmitDogChoice = function(e) {
 };
 const handleBreedOnly = function(dogValue) {
   let url = `https://dog.ceo/api/breed/${dogValue}/images/random`;
-  xhr(url, function(error, response) {
+  fetchXhr(url, function(error, response) {
     if (error) {
       console.error(error);
     }
@@ -66,7 +66,7 @@ const handleSubbreed = function(dogValue) {
     breedSubbreed[1]
   }/images/random`;
   console.log(url);
-  xhr(url, function(error, response) {
+  fetchXhr(url, function(error, response) {
     if (error) {
       console.error(error);
     }
