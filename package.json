@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node src/server.js",
-    "test": "tape ./tests/test.js | tap-spec"
+    "test": "nyc tape ./tests/test.js | tap-spec"
   },
   "repository": {
     "type": "git",
