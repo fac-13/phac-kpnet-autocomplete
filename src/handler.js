@@ -50,6 +50,6 @@ handlers.serverSearchApi = function(request, response){
 
 handlers.pageNotFound = function(request, response) {
   response.writeHead(404, { "Content-Type": "text/html" });
-  // response.write("<h1>404 Page Requested Cannot be Found</h1>");
+  response.write("<h1>404 Page Requested Cannot be Found</h1>");
   response.end();
 };
