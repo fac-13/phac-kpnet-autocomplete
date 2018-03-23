@@ -1,9 +1,8 @@
 const fs = require("fs");
 const path = require("path");
-const logic = require("./logic")
-const handlers = (module.exports = {});
+const logic = require("./logic");
 
-handlers.serverLanding = (request, response) => {
+const serverLanding = (request, response) => {
   fs.readFile(path.join(__dirname, "..", "public", "index.html"), function(
     err,
     file
@@ -14,7 +13,7 @@ handlers.serverLanding = (request, response) => {
   });
 };
 
-handlers.serverPublic = (request, response) => {
+const serverPublic = (request, response) => {
   fs.readFile(path.join(__dirname, "..", request.url), function(
     err,
     file
@@ -34,7 +33,7 @@ handlers.serverPublic = (request, response) => {
     response.end(file);
   });
 };
-handlers.serverSearchApi = (request, response) => {
+const serverSearchApi = (request, response) => {
   const [path, query] = request.url.split('?');
   response.writeHead(200, {"Content-Type": "text/html"});
   if(!query){
@@ -48,8 +47,10 @@ handlers.serverSearchApi = (request, response) => {
   response.end();
 }
 
-handlers.pageNotFound = (request, response) => {
+const pageNotFound = (request, response) => {
   response.writeHead(404, { "Content-Type": "text/html" });
   response.write("<h1>404 Page Requested Cannot be Found</h1>");
   response.end();
 };
+
+module.exports = { serverLanding, serverPublic, serverSearchApi, pageNotFound };
