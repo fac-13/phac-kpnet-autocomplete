@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const logic = require("./logic");
+const searchJson = require("./logic");
 
 const serverLanding = (request, response) => {
   fs.readFile(path.join(__dirname, "..", "public", "index.html"), function(
@@ -42,7 +42,7 @@ const serverSearchApi = (request, response) => {
     return;
   } 
   const [key, value] = query.split('=');
-  const returnedDogs = logic.searchJson(value);
+  const returnedDogs = searchJson(value);
   response.write(JSON.stringify(returnedDogs));
   response.end();
 }

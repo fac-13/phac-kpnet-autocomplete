@@ -1,18 +1,15 @@
-const json = require("./dogbreeds.json")
+const json = require("./dogbreeds.json");
 
-const logic = {
-  searchJson: (inputItem) => {
-    let keys = Object.keys(json);
-    let result = keys.reduce(function(acc, item) {
-      if (item.startsWith(inputItem)) {
-        acc[item] = json[item];
-      }
-      return acc;
-    }, {});
-    return result;
-  }
+
+const searchJson = inputItem => {
+  return Object.keys(json).reduce((acc, item) => {
+    if (item.startsWith(inputItem)) {
+      acc[item] = json[item];
+    }
+    return acc;
+  }, {});
 };
 
-if (typeof module !== "undefined") {
-  module.exports = logic;
-}
+
+module.exports = searchJson;
+
