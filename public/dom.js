@@ -1,5 +1,4 @@
 const input = document.getElementById("search-box");
-// const searchHeader = document.getElementById("search-header");
 const dataList = document.getElementById("dogbreeds-json");
 const submitButton = document.getElementById("submit-button");
 const sectionResults = document.getElementById("section-results");
@@ -23,9 +22,6 @@ const xhr = function(url, callback) {
 
 const search = function() {
   const inputTerms = input.value.toLowerCase();
-  // const resultObj = logicFunctions.searchJson(inputTerms, testJson);
-  // console.log(resultObj);
-  //   searchHeader.innerHTML = inputTerms;
   const url = `/api/search?q=${inputTerms}`;
   xhr(url, function(error, response) {
     if (error) {
@@ -82,16 +78,20 @@ const displayResults = function(res) {
   let dogFrame = document.createElement("div");
   let dogPic = document.createElement("img");
   dogFrame.classList.add("image__container");
+  if (res.status === "error") {
+    sectionResults.appendChild(dogFrame).innerHTML = 
+      '<h1>Talk to the <i class="fas fa-paw"></i></h1>'
+    + '<h2>Maybe try selecting an option from the list instead.</h2>'
+    + '<h2>Woof Woof!</h2>';
+  } else {
   sectionResults.appendChild(dogFrame).appendChild(dogPic);
   dogPic.src = res.message;
   dogPic.alt = 'picture of the dog';
+   }
 };
 
 const dataListPopulate = function(dogsObject) {
     const arrayOfDogs = Object.keys(dogsObject); 
-    if (arrayOfDogs === []) {
-    handleNoDog();
-  } else {
     arrayOfDogs.forEach(function(dog) {
       if (dogsObject[dog].length > 0) {
         dogsObject[dog].forEach(function(item) {
@@ -106,15 +106,8 @@ const dataListPopulate = function(dogsObject) {
         dataList.appendChild(option);
       }
     });
-  }
 };
 
-const handleNoDog = function() {
-  let noDog = document.createElement("h2");
-  noDog.textContent = "Not a Dog!";
-  clearContents(sectionResults);
-  sectionResults.appendChild(noDog);
-};
 
 const headerShrink = function() {
   const header = document.querySelector(".header");

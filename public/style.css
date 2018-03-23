@@ -11,6 +11,10 @@ body {
     margin: 0;
 }
 
+h1 {
+    font-size: 2rem;
+}
+
 .header {
     text-align: center;
     padding-top: 35vh;
@@ -89,7 +93,6 @@ form {
 }
 
 img {
-
     object-fit: cover;
     height: 50vh;
     width: 50vh;
