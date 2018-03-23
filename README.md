@@ -28,5 +28,9 @@ All other operations including the API call to DOG.CEO.API are handled from the 
 
 ![tests](https://user-images.githubusercontent.com/18426161/37826963-65e1a158-2e8d-11e8-92f3-cebfc5c926ab.png)
 
-2) The photos and the original list of breeds come from: [see resource](https://dog.ceo/dog-api/).
+#### API docs
+
+1) The photos and the original list of breeds come from DOG.CEO.API
+
+2) For more information on DOG CEO API: [see resource](https://dog.ceo/dog-api/).
 
