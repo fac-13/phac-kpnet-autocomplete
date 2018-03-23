@@ -1,7 +1,7 @@
 const json = require("./dogbreeds.json")
 
 const logic = {
-  searchJson: function(inputItem) {
+  searchJson: (inputItem) => {
     let keys = Object.keys(json);
     let result = keys.reduce(function(acc, item) {
       if (item.startsWith(inputItem)) {
